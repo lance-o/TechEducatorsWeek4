@@ -167,6 +167,11 @@ function validatePassword(listOfUsernames, username, password){
 
 // Part of the pop-up logic, shows the signup popup.
 showSignupBtn.addEventListener("click", async function(event){
+    if(!begUserNotToPutRealPasswordFired){
+        alert("PLEASE don't put in a real password ;~;");
+        begUserNotToPutRealPasswordFired = true;
+    }
+    
     signupPopup.style.display='block';
 
 });
@@ -174,10 +179,6 @@ showSignupBtn.addEventListener("click", async function(event){
 // Shows login popup, also extremely inefficiently grabs a random asciimoji to throw on there :)
 // If your login takes a while it's because of the random ascii art, sorrt
 showLoginBtn.addEventListener("click", async function(event){
-    if(!begUserNotToPutRealPasswordFired){
-        alert("PLEASE don't put in a real password ;~;");
-        begUserNotToPutRealPasswordFired = true;
-    }
     let rand = Math.floor(Math.random() * 13);
     const result = await fetch("https://techeducatorsweek4.onrender.com/asciimoji");
     const listAsciimoji = await result.json();
