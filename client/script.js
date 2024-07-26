@@ -21,7 +21,7 @@ charCounter.textContent = 500 - [...input.value].length;
 // Get posts. Posts are also stored in a local object, but
 // this is never actually made use of.
 async function fetchPosts(){
-    const result = await fetch("https://techeducatorsweek4-1.onrender.com/posts");
+    const result = await fetch("https://techeducatorsweek4.onrender.com/posts");
     const posts = await result.json();
     setPosts(posts);
     generatePosts(postsObj);
@@ -44,7 +44,7 @@ function returnReadableDate(rawTime){
 // Adds a like to a post. You can like a post as much as you want because I don't really know the best way to set up likes.
 // Do you dynamically create new tables for liked posts? That seems right, but I don't want to play with fire here haha
 async function likeButton(postId, numLikes){
-    await fetch("https://techeducatorsweek4-1.onrender.com/likepost", {
+    await fetch("https://techeducatorsweek4.onrender.com/likepost", {
         method:"POST",
         headers:{
             "Content-Type": "application/json",
@@ -179,7 +179,7 @@ showLoginBtn.addEventListener("click", async function(event){
         begUserNotToPutRealPasswordFired = true;
     }
     let rand = Math.floor(Math.random() * 13);
-    const result = await fetch("https://techeducatorsweek4-1.onrender.com/asciimoji");
+    const result = await fetch("https://techeducatorsweek4.onrender.com/asciimoji");
     const listAsciimoji = await result.json();
     asciimoji.textContent = listAsciimoji[rand].display;
     loginPopup.style.display='block';
@@ -195,7 +195,7 @@ signupForm.addEventListener("submit", async function(event){
     const password = formData.get("password");
     const confPassword = formData.get("confpassword");
 
-    let result = await fetch("https://techeducatorsweek4-1.onrender.com/login", {
+    let result = await fetch("https://techeducatorsweek4.onrender.com/login", {
         method:"POST",
         headers:{
             "Content-Type": "application/json",
@@ -208,7 +208,7 @@ signupForm.addEventListener("submit", async function(event){
         return;
     }
 
-    fetch("https://techeducatorsweek4-1.onrender.com/signup", {
+    fetch("https://techeducatorsweek4.onrender.com/signup", {
         method:"POST",
         headers:{
             "Content-Type": "application/json",
@@ -226,7 +226,7 @@ loginForm.addEventListener("submit", async function(event){
     const username = formData.get("username");
     const password = formData.get("password");
 
-    let result = await fetch("https://techeducatorsweek4-1.onrender.com/login", {
+    let result = await fetch("https://techeducatorsweek4.onrender.com/login", {
         method:"POST",
         headers:{
             "Content-Type": "application/json",
@@ -268,7 +268,7 @@ form.addEventListener("submit", function(event){
     //This is to allow "'" character to exist. SQL normally doesn't enforce "'" as its only string declaration quote, but Supabase does(?)
     message = message.replaceAll("'", "\\27");
 
-    fetch("https://techeducatorsweek4-1.onrender.com/newpost", {
+    fetch("https://techeducatorsweek4.onrender.com/newpost", {
         method:"POST",
         headers:{
             "Content-Type": "application/json",
